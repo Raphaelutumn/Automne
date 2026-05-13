@@ -1,0 +1,65 @@
+baseURL = 'https://raphaelutumn.github.io/Automne/'
+languageCode = 'zh-cn'
+title = 'Automne'
+theme = 'PaperMod'
+
+# 如果以后绑定自定义域名，修改 baseURL 即可
+
+[params]
+  env = 'production'
+  author = 'Raphaelutumn'
+  description = '个人网站'
+  defaultTheme = 'auto'      # 跟随系统亮暗模式
+  disableThemeToggle = false
+
+  # 顶部导航
+  [params.profileMode]
+    enabled = true
+    title = 'Automne'
+    subtitle = '写代码 · 记想法 · 做产品'
+    imageUrl = ''
+    imageTitle = ''
+
+  # 社交链接（先放占位，后续你自己改）
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/Raphaelutumn'
+
+  # 首页文章列表
+  [params.homeInfoParams]
+    Title = '你好，我是 Raphaelutumn'
+    Content = '欢迎来到我的个人网站。这里记录我的项目、思考和笔记。'
+
+# 菜单
+[[menu.main]]
+  name = '文章'
+  url = '/posts/'
+  weight = 10
+
+[[menu.main]]
+  name = '关于'
+  url = '/about/'
+  weight = 20
+
+[[menu.main]]
+  name = '标签'
+  url = '/tags/'
+  weight = 30
+
+[[menu.main]]
+  name = '搜索'
+  url = '/search/'
+  weight = 40
+
+# 分类和标签
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+# Markdown 配置
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true   # 允许内嵌 HTML
