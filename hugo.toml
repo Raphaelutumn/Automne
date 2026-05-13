@@ -2,6 +2,8 @@ baseURL = 'https://raphaelutumn.github.io/Automne/'
 locale = 'zh-cn'
 title = 'Automne'
 theme = 'PaperMod'
+timeZone = 'Asia/Shanghai'
+buildFuture = true
 
 # 如果以后绑定自定义域名，修改 baseURL 即可
 
