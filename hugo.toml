@@ -39,6 +39,11 @@ buildFuture = true
   weight = 10
 
 [[menu.main]]
+  name = '图片'
+  url = '/gallery/'
+  weight = 12
+
+[[menu.main]]
   name = '关于'
   url = '/about/'
   weight = 20

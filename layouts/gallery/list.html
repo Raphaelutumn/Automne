@@ -1,0 +1,43 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content md-content">
+  {{ .Content }}
+</div>
+{{- end }}
+
+{{- $pages := .RegularPages }}
+
+<div class="gallery-grid">
+{{- range $index, $page := $pages }}
+  <article class="gallery-card">
+    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+    {{- $alt := (.Param "cover.alt") | default (.Param "cover.caption") | default .Title }}
+    {{- $img := .Param "cover.image" }}
+    {{- if and $img (not $isHidden) }}
+    <a href="{{ .Permalink }}" class="gallery-link">
+      <figure class="gallery-figure">
+        <img loading="lazy" src="{{ $img | absURL }}" alt="{{ $alt }}" class="gallery-img">
+        <figcaption class="gallery-caption">{{ .Title }}</figcaption>
+      </figure>
+    </a>
+    {{- else }}
+    <a href="{{ .Permalink }}" class="gallery-link">
+      <div class="gallery-placeholder">
+        <span>{{ .Title }}</span>
+      </div>
+    </a>
+    {{- end }}
+  </article>
+{{- end }}
+</div>
+
+{{- end }}{{/* end main */}}
