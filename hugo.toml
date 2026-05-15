@@ -44,6 +44,11 @@ buildFuture = true
   weight = 12
 
 [[menu.main]]
+  name = '游戏'
+  url = '/games/'
+  weight = 14
+
+[[menu.main]]
   name = '关于'
   url = '/about/'
   weight = 20

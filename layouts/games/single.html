@@ -1,0 +1,27 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+</header>
+
+<article class="post-single">
+  <div class="post-content">
+    {{- $img := .Param "cover.image" }}
+    {{- if $img }}
+    <div class="games-full">
+      <img src="{{ $img | absURL }}" alt="{{ .Title }}" class="games-full-img">
+    </div>
+    {{- end }}
+
+    <div class="games-full-info">
+      <a href="https://store.steampowered.com/app/{{ .File.ContentBaseName }}/" target="_blank" rel="noopener noreferrer" class="games-steam-link">
+        Steam 商店页面
+      </a>
+    </div>
+
+    {{ .Content }}
+  </div>
+</article>
+
+{{- end }}{{/* end main */}}

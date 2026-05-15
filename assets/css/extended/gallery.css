@@ -87,3 +87,114 @@
     color: var(--secondary);
     font-size: 15px;
 }
+
+/* Games grid layout */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+    margin-top: var(--gap);
+}
+
+@media (max-width: 900px) {
+    .games-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.games-card {
+    position: relative;
+    background: var(--entry);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.games-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--tertiary);
+}
+
+.games-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.games-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.games-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.games-caption {
+    padding: 8px 10px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--primary);
+    background: var(--entry);
+    line-height: 1.3;
+}
+
+.games-placeholder {
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tertiary);
+    color: var(--secondary);
+    font-size: 13px;
+}
+
+/* Games single page */
+.games-full {
+    margin: var(--content-gap) 0;
+    text-align: center;
+}
+
+.games-full-img {
+    max-width: 400px;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+.games-full-info {
+    text-align: center;
+    margin: var(--gap) 0;
+}
+
+.games-steam-link {
+    display: inline-block;
+    padding: 8px 24px;
+    background: var(--primary);
+    color: var(--theme);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
+}
+
+.games-steam-link:hover {
+    opacity: 0.85;
+}

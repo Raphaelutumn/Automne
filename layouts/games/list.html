@@ -1,0 +1,45 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content md-content">
+  {{ .Content }}
+</div>
+{{- end }}
+
+{{- $pages := .RegularPages }}
+
+<div class="games-grid">
+{{- range $index, $page := $pages }}
+  <article class="games-card">
+    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+    {{- $alt := (.Param "cover.alt") | default (.Param "cover.caption") | default .Title }}
+    {{- $img := .Param "cover.image" }}
+    {{- $steamId := .File.ContentBaseName }}
+    {{- if and $img (not $isHidden) }}
+    <a href="https://store.steampowered.com/app/{{ $steamId }}/" target="_blank" rel="noopener noreferrer" class="games-link">
+      <figure class="games-figure">
+        <img loading="lazy" src="{{ $img | absURL }}" alt="{{ $alt }}" class="games-img">
+        <figcaption class="games-caption">{{ .Title }}</figcaption>
+      </figure>
+    </a>
+    {{- else }}
+    <a href="https://store.steampowered.com/app/{{ $steamId }}/" target="_blank" rel="noopener noreferrer" class="games-link">
+      <div class="games-placeholder">
+        <span>{{ .Title }}</span>
+      </div>
+      <div class="games-caption">{{ .Title }}</div>
+    </a>
+    {{- end }}
+  </article>
+{{- end }}
+</div>
+
+{{- end }}{{/* end main */}}
