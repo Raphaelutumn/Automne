@@ -1,5 +1,5 @@
 ---
-title: 图片
-description: 图集
+title: 摄影
+description: 摄影作品
 hiddenInHomeList: true
 ---
