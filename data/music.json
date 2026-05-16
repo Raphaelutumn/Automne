@@ -1,0 +1,47 @@
+{
+  "playlists": [
+    {
+      "name": "无可争议的T0，代表我的最高认可",
+      "slug": "t0",
+      "description": "代表我的最高认可",
+      "songs": [
+        { "title": "OPERA*2", "artist": "Vitas", "album": "The Myth Of The Shaking Soul Voice" },
+        { "title": "l'homme et l'oiseau", "artist": "Barbara Pravi", "album": "l'homme et l'oiseau" }
+      ]
+    },
+    {
+      "name": "T1",
+      "slug": "t1",
+      "description": "同样顶尖，难以割舍",
+      "songs": [
+        { "title": "祖国不会忘记", "artist": "黄鹭", "album": "祖国不会忘记" },
+        { "title": "OPERA*2", "artist": "Vitas", "album": "The Myth Of The Shaking Soul Voice" },
+        { "title": "À la vie comme à la mort", "artist": "Joyce Jonathan / Jason Mraz", "album": "Les p'tites jolies choses" },
+        { "title": "Avant toi", "artist": "Vitaa / Slimane", "album": "VersuS" },
+        { "title": "Nocturne No. 1 in B Flat Minor, Op. 9, No. 1", "artist": "Arthur Rubinstein", "album": "The Chopin Collection: The Nocturnes" },
+        { "title": "查尔达什舞曲", "artist": "吕思清 / 芦静怡", "album": "小提琴奏鸣曲与小品" },
+        { "title": "Por Una Cabeza", "artist": "NewPiano", "album": "《闻香识女人》插曲" },
+        { "title": "Regardez-moi", "artist": "Molière l'opéra urbain / Abi Bernadoth", "album": "Regardez-moi" },
+        { "title": "LABOUR (the cacophony)", "artist": "Paris Paloma", "album": "LABOUR (the cacophony)" },
+        { "title": "A toi", "artist": "Joe Dassin", "album": "Ses Plus Grands Succès" }
+      ]
+    },
+    {
+      "name": "T1备选池",
+      "slug": "t1-pool",
+      "description": "冲击T1的候补力量",
+      "songs": [
+        { "title": "双人舞", "artist": "阮暖暖", "album": "双人舞" },
+        { "title": "Je ne parle pas français", "artist": "Namika", "album": "Je ne parle pas français" },
+        { "title": "Changer", "artist": "Félix Gray", "album": "Don Juan (Un Spectacle Musical)" },
+        { "title": "Dreams", "artist": "Brandi Carlile", "album": "Give Up The Ghost" },
+        { "title": "Take You To Hell", "artist": "Ava Max", "album": "Heaven & Hell" },
+        { "title": "Anywhere Is (2009 Remaster)", "artist": "Enya", "album": "The Memory of Trees" },
+        { "title": "Je ne sais pas", "artist": "Ycare / Joyce Jonathan", "album": "Je n'sais pas" },
+        { "title": "Hate Me", "artist": "Nico Collins", "album": "Hate Me" },
+        { "title": "Yes I'm A Mess", "artist": "AJR", "album": "Yes I'm A Mess" },
+        { "title": "La Seine", "artist": "Vanessa Paradis / -M-", "album": "Cinéma français" }
+      ]
+    }
+  ]
+}

@@ -49,6 +49,11 @@ buildFuture = true
   weight = 14
 
 [[menu.main]]
+  name = '音乐'
+  url = '/music/'
+  weight = 16
+
+[[menu.main]]
   name = '关于'
   url = '/about/'
   weight = 20
