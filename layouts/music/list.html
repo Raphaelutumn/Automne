@@ -35,31 +35,6 @@
       </meting-js>
     </div>
     {{ end }}
-
-    <details class="music-tracklist">
-      <summary>歌曲列表（共 {{ len $playlist.songs }} 首）</summary>
-      <div class="music-list">
-      {{ range $song := $playlist.songs }}
-        {{ $searchQuery := printf "%s %s" $song.title $song.artist }}
-        <a href="{{ printf `https://music.163.com/#/search/m/?s=%s` (urlquery $searchQuery) | safeURL }}"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="music-item">
-          <div class="music-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
-          </div>
-          <div class="music-item-info">
-            <span class="music-item-title">{{ $song.title }}</span>
-            <span class="music-item-sep">&middot;</span>
-            <span class="music-item-artist">{{ $song.artist }}</span>
-          </div>
-          <span class="music-item-album">{{ $song.album }}</span>
-        </a>
-      {{ end }}
-      </div>
-    </details>
   </section>
 
   {{ end }}
