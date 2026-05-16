@@ -1,6 +1,44 @@
+/* Music intro */
+.music-intro {
+    color: var(--secondary);
+    font-size: 14px;
+    margin-bottom: var(--gap);
+}
+
 /* Music tier section */
 .music-tier {
     margin-bottom: calc(var(--gap) * 2);
+}
+
+/* MetingJS player wrapper */
+.music-player-wrapper {
+    margin-bottom: var(--gap);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--entry);
+    border: 1px solid var(--border);
+}
+
+/* Collapsible tracklist */
+.music-tracklist {
+    margin-top: var(--gap);
+}
+
+.music-tracklist summary {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--secondary);
+    padding: 6px 0;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.music-tracklist summary:hover {
+    color: var(--primary);
+}
+
+.music-tracklist .music-list {
+    margin-top: 8px;
 }
 
 .music-tier-title {

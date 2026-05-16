@@ -10,6 +10,8 @@
 
 {{ $musicData := .Site.Data.music }}
 {{ if $musicData }}
+  <p class="music-intro">以下播放器可直接播放网易云音乐歌单，加载可能需要几秒。</p>
+
   {{ range $playlist := $musicData.playlists }}
 
   <section class="music-tier">
@@ -21,30 +23,49 @@
     <p class="music-tier-desc">{{ $playlist.description }}</p>
     {{ end }}
 
-    <div class="music-list">
-    {{ range $song := $playlist.songs }}
-      {{ $searchQuery := printf "%s %s" $song.title $song.artist }}
-      <a href="{{ printf `https://music.163.com/#/search/m/?s=%s` (urlquery $searchQuery) | safeURL }}"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="music-item">
-        <div class="music-item-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5 3 19 12 5 21 5 3" />
-          </svg>
-        </div>
-        <div class="music-item-info">
-          <span class="music-item-title">{{ $song.title }}</span>
-          <span class="music-item-sep">&middot;</span>
-          <span class="music-item-artist">{{ $song.artist }}</span>
-        </div>
-        <span class="music-item-album">{{ $song.album }}</span>
-      </a>
-    {{ end }}
+    {{ if $playlist.id }}
+    <div class="music-player-wrapper">
+      <meting-js
+        server="netease"
+        type="playlist"
+        id="{{ $playlist.id }}"
+        order="list"
+        preload="none"
+        list-max-height="380px">
+      </meting-js>
     </div>
+    {{ end }}
+
+    <details class="music-tracklist">
+      <summary>歌曲列表（共 {{ len $playlist.songs }} 首）</summary>
+      <div class="music-list">
+      {{ range $song := $playlist.songs }}
+        {{ $searchQuery := printf "%s %s" $song.title $song.artist }}
+        <a href="{{ printf `https://music.163.com/#/search/m/?s=%s` (urlquery $searchQuery) | safeURL }}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="music-item">
+          <div class="music-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+          </div>
+          <div class="music-item-info">
+            <span class="music-item-title">{{ $song.title }}</span>
+            <span class="music-item-sep">&middot;</span>
+            <span class="music-item-artist">{{ $song.artist }}</span>
+          </div>
+          <span class="music-item-album">{{ $song.album }}</span>
+        </a>
+      {{ end }}
+      </div>
+    </details>
   </section>
 
   {{ end }}
 {{ end }}
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
 
 {{- end }}{{/* end main */}}

@@ -1,0 +1,14 @@
+{{- if eq .Section "music" }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style>
+  .aplayer {
+    margin-bottom: var(--gap);
+    border-radius: var(--radius);
+    box-shadow: none;
+    font-family: inherit;
+  }
+  .aplayer .aplayer-lrc {
+    font-family: inherit;
+  }
+</style>
+{{- end }}

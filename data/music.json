@@ -3,6 +3,7 @@
     {
       "name": "无可争议的T0，代表我的最高认可",
       "slug": "t0",
+      "id": "14275253353",
       "description": "代表我的最高认可",
       "songs": [
         { "title": "OPERA*2", "artist": "Vitas", "album": "The Myth Of The Shaking Soul Voice" },
@@ -12,6 +13,7 @@
     {
       "name": "T1",
       "slug": "t1",
+      "id": "12618938379",
       "description": "同样顶尖，难以割舍",
       "songs": [
         { "title": "祖国不会忘记", "artist": "黄鹭", "album": "祖国不会忘记" },
@@ -29,6 +31,7 @@
     {
       "name": "T1备选池",
       "slug": "t1-pool",
+      "id": "12700616380",
       "description": "冲击T1的候补力量",
       "songs": [
         { "title": "双人舞", "artist": "阮暖暖", "album": "双人舞" },
