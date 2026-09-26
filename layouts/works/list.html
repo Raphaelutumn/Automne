@@ -1,0 +1,157 @@
+{{- define "main" }}
+
+{{- $projects := .Site.Data.works.projects }}
+{{- $categories := slice "product" "tool" "game" "content" }}
+{{- $labels := dict "product" "平台 / 产品" "tool" "工具 / 自动化" "game" "游戏 / 互动" "content" "内容 / 站点" }}
+{{- $buildStatuses := slice "工具" "可运行" "v1" "工程骨架" "战斗原型" "静态站点" }}
+{{- $planStatuses := slice "方案" "PRD" "编排方案" }}
+{{- $iterateStatuses := slice "分批维护" "批量规范" "持续迭代" "规则体系" }}
+{{- $total := len $projects }}
+{{- $prdCount := len (where $projects "standard_prd" true) }}
+{{- $buildCount := len (where $projects "status" "in" $buildStatuses) }}
+{{- $planCount := len (where $projects "status" "in" $planStatuses) }}
+{{- $iterateCount := len (where $projects "status" "in" $iterateStatuses) }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content md-content works-intro">
+  {{ .Content }}
+</div>
+{{- end }}
+
+<section class="works-stats" aria-label="作品集概览">
+  <div class="work-stat"><strong>{{ $total }}</strong><span>项目</span></div>
+  <div class="work-stat"><strong>{{ $prdCount }}</strong><span>标准 PRD</span></div>
+  <div class="work-stat"><strong>{{ len $categories }}</strong><span>类型</span></div>
+  <div class="work-stat"><strong>{{ $buildCount }}</strong><span>可运行 / 原型</span></div>
+  <div class="work-stat"><strong>{{ $planCount }}</strong><span>方案 / PRD</span></div>
+  <div class="work-stat"><strong>{{ $iterateCount }}</strong><span>持续迭代</span></div>
+</section>
+
+<div class="works-toolbar">
+  <div class="works-filters" role="group" aria-label="按类型筛选">
+    <button class="works-chip active" type="button" data-works-filter="all">全部项目<span>{{ $total }}</span></button>
+    {{- range $category := $categories }}
+    <button class="works-chip" type="button" data-works-filter="{{ $category }}">{{ index $labels $category }}<span>{{ len (where $projects "category" $category) }}</span></button>
+    {{- end }}
+  </div>
+  <div class="works-tools">
+    <label class="works-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+      <input id="worksSearch" type="search" placeholder="搜索项目、能力或技术关键词" autocomplete="off" aria-label="搜索项目">
+    </label>
+    <div class="works-view" role="group" aria-label="切换视图">
+      <button class="works-view-btn active" type="button" data-works-view="grid">网格</button>
+      <button class="works-view-btn" type="button" data-works-view="list">列表</button>
+    </div>
+  </div>
+</div>
+
+<p class="works-result" id="worksResult" aria-live="polite">显示 {{ $total }} 个项目</p>
+
+<div class="works-grid" id="worksGrid">
+  {{- range $project := $projects }}
+  {{- $haystack := printf "%s %s %s %s %s %s %s %s %s %s" $project.name $project.category_label $project.status (delimit $project.tags " ") $project.summary $project.highlight (delimit $project.capabilities " ") (delimit $project.stack " ") $project.problem $project.boundary }}
+  <article class="work-card" data-category="{{ $project.category }}" data-search="{{ lower $haystack | htmlEscape }}">
+    <div class="work-card-head">
+      <span class="work-index">{{ $project.index }}</span>
+      <span class="work-type">{{ $project.category_label }}</span>
+      <span class="work-status">{{ $project.status }}</span>
+    </div>
+
+    <h2 class="work-name">{{ $project.name }}</h2>
+    <p class="work-summary">{{ $project.summary }}</p>
+    {{- with $project.highlight }}
+    <p class="work-highlight">{{ . }}</p>
+    {{- end }}
+
+    <ul class="work-tags">
+      {{- range $project.tags }}
+      <li>{{ . }}</li>
+      {{- end }}
+    </ul>
+
+    <details class="work-more">
+      <summary>项目详情</summary>
+      <div class="work-more-body">
+        <div class="work-field">
+          <h3>解决的问题</h3>
+          <p>{{ $project.problem }}</p>
+        </div>
+        {{- with $project.capabilities }}
+        <div class="work-field">
+          <h3>核心能力</h3>
+          <ul>
+            {{- range . }}
+            <li>{{ . }}</li>
+            {{- end }}
+          </ul>
+        </div>
+        {{- end }}
+        {{- with $project.stack }}
+        <div class="work-field">
+          <h3>技术形态</h3>
+          <ul class="work-chips">
+            {{- range . }}
+            <li>{{ . }}</li>
+            {{- end }}
+          </ul>
+        </div>
+        {{- end }}
+        <div class="work-field">
+          <h3>当前边界</h3>
+          <p>{{ $project.boundary }}</p>
+        </div>
+        {{- with $project.outputs }}
+        <div class="work-field">
+          <h3>项目产出物</h3>
+          <p class="work-outputs">{{ delimit . "、" }}</p>
+        </div>
+        {{- end }}
+      </div>
+    </details>
+  </article>
+  {{- end }}
+</div>
+
+<script>
+  (() => {
+    const grid = document.getElementById('worksGrid');
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.work-card'));
+    const chips = Array.from(document.querySelectorAll('[data-works-filter]'));
+    const viewButtons = Array.from(document.querySelectorAll('[data-works-view]'));
+    const search = document.getElementById('worksSearch');
+    const result = document.getElementById('worksResult');
+    const state = { filter: 'all', query: '', view: 'grid' };
+
+    function apply() {
+      const query = state.query.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const typeMatch = state.filter === 'all' || card.dataset.category === state.filter;
+        const queryMatch = !query || (card.dataset.search || '').indexOf(query) !== -1;
+        const show = typeMatch && queryMatch;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      grid.classList.toggle('works-grid-list', state.view === 'list');
+      result.textContent = visible ? '显示 ' + visible + ' 个项目' : '没有匹配的项目，试试其他关键词或切回「全部项目」。';
+      chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.worksFilter === state.filter));
+      viewButtons.forEach((button) => button.classList.toggle('active', button.dataset.worksView === state.view));
+    }
+
+    chips.forEach((chip) => chip.addEventListener('click', () => { state.filter = chip.dataset.worksFilter; apply(); }));
+    viewButtons.forEach((button) => button.addEventListener('click', () => { state.view = button.dataset.worksView; apply(); }));
+    if (search) search.addEventListener('input', (event) => { state.query = event.target.value; apply(); });
+  })();
+</script>
+
+{{- end }}{{/* end main */}}
