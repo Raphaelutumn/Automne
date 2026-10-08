@@ -44,7 +44,7 @@ buildFuture = true
   weight = 11
 
 [[menu.main]]
-  name = '摄影'
+  name = '旅行'
   url = '/gallery/'
   weight = 12
 
