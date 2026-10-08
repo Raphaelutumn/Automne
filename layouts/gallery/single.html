@@ -9,19 +9,29 @@
     {{- end }}
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
-      {{- partial "post_meta.html" . -}}
+      {{- .Date.Format "2006-01-02" }} · {{ len (.Resources.ByType "image") }} 张
     </div>
     {{- end }}
   </header>
 
-  {{- $img := .Param "cover.image" }}
-  {{- if $img }}
-  {{- $alt := (.Param "cover.alt") | default (.Param "cover.caption") | default .Title }}
-  <div class="gallery-full">
-    <img loading="eager" src="{{ $img | absURL }}" alt="{{ $alt }}" class="gallery-full-img">
-    {{- with .Param "cover.caption" }}
-    <p class="gallery-full-caption">{{ . | markdownify }}</p>
+  {{- $images := .Resources.ByType "image" }}
+  {{- if $images }}
+  <div class="album-grid" id="albumGrid">
+    {{- range $i, $img := $images }}
+    {{- $thumb := $img.Resize "800x q82" }}
+    {{- $full := $img.Resize "1600x q85" }}
+    <button class="album-item" type="button"
+            data-full="{{ $full.RelPermalink }}"
+            data-index="{{ add $i 1 }}"
+            aria-label="查看第 {{ add $i 1 }} 张，共 {{ len $images }} 张">
+      <img loading="lazy" src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}"
+           alt="{{ $.Title }} 第 {{ add $i 1 }} 张">
+    </button>
     {{- end }}
+  </div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="{{ .Title }} 大图">
+    <button class="lightbox-close" type="button" aria-label="关闭">×</button>
+    <img alt="{{ .Title }}">
   </div>
   {{- end }}
 
@@ -42,5 +52,40 @@
     </ul>
   </footer>
 </article>
+
+<script>
+  (() => {
+    const grid = document.getElementById('albumGrid');
+    const box = document.getElementById('lightbox');
+    if (!grid || !box) return;
+    const full = box.querySelector('img');
+    const items = Array.from(grid.querySelectorAll('.album-item'));
+    let current = 0;
+
+    function open(index) {
+      const item = items[index];
+      if (!item) return;
+      current = index;
+      full.src = item.dataset.full;
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      box.classList.remove('open');
+      full.removeAttribute('src');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((item, index) => item.addEventListener('click', () => open(index)));
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') { close(); return; }
+      if (!box.classList.contains('open')) return;
+      if (event.key === 'ArrowRight') open(Math.min(items.length - 1, current + 1));
+      if (event.key === 'ArrowLeft') open(Math.max(0, current - 1));
+    });
+  })();
+</script>
 
 {{- end }}{{/* end main */}}

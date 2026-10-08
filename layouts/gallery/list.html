@@ -14,28 +14,35 @@
 </div>
 {{- end }}
 
-{{- $pages := .RegularPages }}
+{{- $albums := .RegularPages.ByDate.Reverse }}
 
 <div class="gallery-grid">
-{{- range $index, $page := $pages }}
+{{- range $album := $albums }}
+  {{- $images := $album.Resources.ByType "image" }}
+  {{- $count := len $images }}
   <article class="gallery-card">
-    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
-    {{- $alt := (.Param "cover.alt") | default (.Param "cover.caption") | default .Title }}
-    {{- $img := .Param "cover.image" }}
-    {{- if and $img (not $isHidden) }}
-    <a href="{{ .Permalink }}" class="gallery-link">
+    {{- $isHidden := ($album.Param "cover.hiddenInList") | default ($album.Param "cover.hidden") | default false }}
+    {{- $alt := ($album.Param "cover.alt") | default $album.Title }}
+    {{- $cover := false }}
+    {{- if and $images (not $isHidden) }}
+      {{- $cover = (index $images 0).Fill "600x400 Center" }}
+    {{- end }}
+    {{- $legacy := $album.Param "cover.image" }}
+    <a href="{{ $album.Permalink }}" class="gallery-link">
       <figure class="gallery-figure">
-        <img loading="lazy" src="{{ $img | absURL }}" alt="{{ $alt }}" class="gallery-img">
-        <figcaption class="gallery-caption">{{ .Title }}</figcaption>
+        {{- if $cover }}
+        <img loading="lazy" src="{{ $cover.RelPermalink }}" width="{{ $cover.Width }}" height="{{ $cover.Height }}" alt="{{ $alt }}" class="gallery-img">
+        {{- else if $legacy }}
+        <img loading="lazy" src="{{ $legacy | absURL }}" alt="{{ $alt }}" class="gallery-img">
+        {{- else }}
+        <div class="gallery-placeholder"><span>{{ $album.Title }}</span></div>
+        {{- end }}
+        <figcaption class="gallery-caption">
+          <span class="gallery-title">{{ $album.Title }}</span>
+          <span class="gallery-meta">{{ $album.Date.Format "2006-01-02" }}{{ with $album.Description }} · {{ . }}{{ end }} · {{ $count }} 张</span>
+        </figcaption>
       </figure>
     </a>
-    {{- else }}
-    <a href="{{ .Permalink }}" class="gallery-link">
-      <div class="gallery-placeholder">
-        <span>{{ .Title }}</span>
-      </div>
-    </a>
-    {{- end }}
   </article>
 {{- end }}
 </div>

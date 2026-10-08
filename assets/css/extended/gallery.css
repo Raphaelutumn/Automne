@@ -58,6 +58,18 @@
     text-align: center;
     color: var(--primary);
     background: var(--entry);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.gallery-title {
+    font-weight: 600;
+}
+
+.gallery-meta {
+    font-size: 12px;
+    color: var(--secondary);
 }
 
 .gallery-placeholder {
@@ -70,22 +82,91 @@
     font-size: 14px;
 }
 
-/* Single gallery full image */
-.gallery-full {
+/* Album page: keep each photo's own aspect ratio in a column flow */
+.album-grid {
+    column-count: 3;
+    column-gap: var(--gap);
     margin: var(--content-gap) 0;
-    text-align: center;
 }
 
-.gallery-full-img {
-    max-width: 100%;
-    height: auto;
+@media (max-width: 900px) {
+    .album-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 560px) {
+    .album-grid {
+        column-count: 1;
+    }
+}
+
+.album-item {
+    display: block;
+    width: 100%;
+    margin: 0 0 var(--gap);
+    padding: 0;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
+    background: var(--entry);
+    overflow: hidden;
+    cursor: zoom-in;
+    break-inside: avoid;
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.gallery-full-caption {
-    margin-top: 12px;
-    color: var(--secondary);
-    font-size: 15px;
+.album-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--tertiary);
+}
+
+.album-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 40;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--radius);
+    cursor: zoom-out;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+    line-height: 1;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.24);
 }
 
 /* Games grid layout */
