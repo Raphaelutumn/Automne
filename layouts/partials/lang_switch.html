@@ -1,0 +1,15 @@
+{{- /* 界面语言切换控件（中文 / English / Français）。
+       语言列表与标签在这里维护；文案切换逻辑见 assets/js/ui-i18n.js */ -}}
+{{- $languages := slice
+  (dict "code" "zh" "label" "中文" "title" "中文")
+  (dict "code" "en" "label" "EN" "title" "English")
+  (dict "code" "fr" "label" "FR" "title" "Français") -}}
+{{- $active := site.Language.Lang | default "zh" -}}
+<span class="nav-sep" aria-hidden="true">|</span>
+<div class="lang-switch" role="group" aria-label="切换界面语言" data-i18n-aria-label="common.lang_switch">
+    {{- range $languages }}
+    {{- $on := eq .code $active }}
+    <button class="lang-btn{{ if $on }} active{{ end }}" type="button" data-lang="{{ .code }}" lang="{{ .code }}"
+        title="{{ .title }}" aria-pressed="{{ if $on }}true{{ else }}false{{ end }}">{{ .label }}</button>
+    {{- end }}
+</div>

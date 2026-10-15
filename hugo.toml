@@ -1,5 +1,6 @@
 baseURL = 'https://raphaelutumn.github.io/Automne/'
 locale = 'zh-cn'
+defaultContentLanguage = 'zh'
 title = 'Automne'
 theme = 'PaperMod'
 timeZone = 'Asia/Shanghai'
@@ -34,41 +35,49 @@ buildFuture = true
 
 # 菜单
 [[menu.main]]
+  identifier = 'posts'
   name = '文章'
   url = '/posts/'
   weight = 10
 
 [[menu.main]]
+  identifier = 'works'
   name = '作品'
   url = '/works/'
   weight = 11
 
 [[menu.main]]
+  identifier = 'gallery'
   name = '旅行'
   url = '/gallery/'
   weight = 12
 
 [[menu.main]]
+  identifier = 'games'
   name = '游戏'
   url = '/games/'
   weight = 14
 
 [[menu.main]]
+  identifier = 'music'
   name = '音乐'
   url = '/music/'
   weight = 16
 
 [[menu.main]]
+  identifier = 'about'
   name = '关于'
   url = '/about/'
   weight = 20
 
 [[menu.main]]
+  identifier = 'tags'
   name = '标签'
   url = '/tags/'
   weight = 30
 
 [[menu.main]]
+  identifier = 'search'
   name = '搜索'
   url = '/search/'
   weight = 40

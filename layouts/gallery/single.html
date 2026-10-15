@@ -1,5 +1,7 @@
 {{- define "main" }}
 
+{{- $images := .Resources.ByType "image" }}
+
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
@@ -9,12 +11,12 @@
     {{- end }}
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
-      {{- .Date.Format "2006-01-02" }} · {{ len (.Resources.ByType "image") }} 张
+      {{- .Date.Format "2006-01-02" }} ·
+      <span data-i18n="gallery.photo_count" data-i18n-vars='{{ dict "count" (len $images) | jsonify }}'>{{ len $images }} 张</span>
     </div>
     {{- end }}
   </header>
 
-  {{- $images := .Resources.ByType "image" }}
   {{- if $images }}
   <div class="album-grid" id="albumGrid">
     {{- range $i, $img := $images }}
@@ -23,14 +25,19 @@
     <button class="album-item" type="button"
             data-full="{{ $full.RelPermalink }}"
             data-index="{{ add $i 1 }}"
-            aria-label="查看第 {{ add $i 1 }} 张，共 {{ len $images }} 张">
+            aria-label="查看第 {{ add $i 1 }} 张，共 {{ len $images }} 张"
+            data-i18n-aria-label="gallery.view_photo"
+            data-i18n-vars='{{ dict "index" (add $i 1) "total" (len $images) | jsonify }}'>
       <img loading="lazy" src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}"
-           alt="{{ $.Title }} 第 {{ add $i 1 }} 张">
+           alt="{{ $.Title }} 第 {{ add $i 1 }} 张"
+           data-i18n-alt="gallery.photo_alt"
+           data-i18n-vars='{{ dict "title" $.Title "index" (add $i 1) | jsonify }}'>
     </button>
     {{- end }}
   </div>
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="{{ .Title }} 大图">
-    <button class="lightbox-close" type="button" aria-label="关闭">×</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="{{ .Title }} 大图"
+       data-i18n-aria-label="gallery.lightbox_label" data-i18n-vars='{{ dict "title" .Title | jsonify }}'>
+    <button class="lightbox-close" type="button" aria-label="关闭" data-i18n-aria-label="common.close">×</button>
     <img alt="{{ .Title }}">
   </div>
   {{- end }}

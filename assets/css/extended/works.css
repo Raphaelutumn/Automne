@@ -51,7 +51,7 @@
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.works-chip span {
+.works-chip .works-chip-count {
     margin-left: 6px;
     font-size: 11px;
     font-variant-numeric: tabular-nums;

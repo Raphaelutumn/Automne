@@ -1,3 +1,7 @@
+{{- /* 界面语言切换：词表 + 切换逻辑（构建时把 data/ui.yaml 注入脚本） */ -}}
+{{- $ui := resources.Get "js/ui-i18n.js" | resources.ExecuteAsTemplate "js/ui-i18n.js" . | minify | fingerprint }}
+<script src="{{ $ui.RelPermalink }}" integrity="{{ $ui.Data.Integrity }}"></script>
+
 {{- if eq .Section "music" }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <style>

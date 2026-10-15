@@ -1,0 +1,187 @@
+# 界面文案词表（单一事实来源）
+#
+# 用法：模板里给元素加 data-i18n="key"（或 data-i18n-placeholder /
+# data-i18n-aria-label / data-i18n-title / data-i18n-alt），
+# 前端 assets/js/ui-i18n.js 会把 data/ui.yaml 注入浏览器并切换文案。
+# 带数字的文案用 {count}、{index}、{title} 占位，模板侧用 data-i18n-vars 传值。
+#
+# 注意：这里只放"界面文案"。文章、相册标题、作品资料等内容保持原样，不要放进来。
+
+zh:
+  "menu.posts": "文章"
+  "menu.works": "作品"
+  "menu.gallery": "旅行"
+  "menu.games": "游戏"
+  "menu.music": "音乐"
+  "menu.about": "关于"
+  "menu.tags": "标签"
+  "menu.search": "搜索"
+
+  "common.close": "关闭"
+  "common.theme_toggle": "切换日夜模式"
+  "common.lang_switch": "切换界面语言"
+
+  "home.tagline": "写代码 · 记想法 · 做产品"
+
+  "page.search_placeholder": "输入关键词..."
+
+  "gallery.photo_count": "{count} 张"
+  "gallery.view_photo": "查看第 {index} 张，共 {total} 张"
+  "gallery.photo_alt": "{title} 第 {index} 张"
+  "gallery.lightbox_label": "{title} 大图"
+
+  "games.steam_store": "Steam 商店页面"
+
+  "music.intro": "以下播放器可直接播放网易云音乐歌单，加载可能需要几秒。"
+
+  "works.overview": "作品集概览"
+  "works.stat.projects": "项目"
+  "works.stat.prd": "标准 PRD"
+  "works.stat.types": "类型"
+  "works.stat.build": "可运行 / 原型"
+  "works.stat.plan": "方案 / PRD"
+  "works.stat.iterate": "持续迭代"
+  "works.filter_label": "按类型筛选"
+  "works.filter_all": "全部项目"
+  "works.cat.product": "平台 / 产品"
+  "works.cat.tool": "工具 / 自动化"
+  "works.cat.game": "游戏 / 互动"
+  "works.cat.content": "内容 / 站点"
+  "works.search_placeholder": "搜索项目、能力或技术关键词"
+  "works.search_aria": "搜索项目"
+  "works.view_label": "切换视图"
+  "works.view_grid": "网格"
+  "works.view_list": "列表"
+  "works.detail": "项目详情"
+  "works.field.problem": "解决的问题"
+  "works.field.capabilities": "核心能力"
+  "works.field.stack": "技术形态"
+  "works.field.boundary": "当前边界"
+  "works.field.outputs": "项目产出物"
+  "works.result": "显示 {count} 个项目"
+  "works.result_empty": "没有匹配的项目，试试其他关键词或切回「全部项目」。"
+
+  "theme.prev_page": "« 上一页"
+  "theme.next_page": "下一页 »"
+
+en:
+  "menu.posts": "Posts"
+  "menu.works": "Works"
+  "menu.gallery": "Travel"
+  "menu.games": "Games"
+  "menu.music": "Music"
+  "menu.about": "About"
+  "menu.tags": "Tags"
+  "menu.search": "Search"
+
+  "common.close": "Close"
+  "common.theme_toggle": "Toggle theme"
+  "common.lang_switch": "Switch interface language"
+
+  "home.tagline": "Code · Ideas · Products"
+
+  "page.search_placeholder": "Type keywords..."
+
+  "gallery.photo_count":
+    one: "{count} photo"
+    other: "{count} photos"
+  "gallery.view_photo": "View photo {index} of {total}"
+  "gallery.photo_alt": "{title} — photo {index}"
+  "gallery.lightbox_label": "{title} — enlarged view"
+
+  "games.steam_store": "Steam store page"
+
+  "music.intro": "The players below stream my NetEase Cloud Music playlists; loading may take a few seconds."
+
+  "works.overview": "Portfolio overview"
+  "works.stat.projects": "Projects"
+  "works.stat.prd": "Standard PRDs"
+  "works.stat.types": "Types"
+  "works.stat.build": "Runnable / prototypes"
+  "works.stat.plan": "Plans / PRDs"
+  "works.stat.iterate": "Continuous iteration"
+  "works.filter_label": "Filter by type"
+  "works.filter_all": "All projects"
+  "works.cat.product": "Platforms / products"
+  "works.cat.tool": "Tools / automation"
+  "works.cat.game": "Games / interactive"
+  "works.cat.content": "Content / sites"
+  "works.search_placeholder": "Search projects, skills or tech keywords"
+  "works.search_aria": "Search projects"
+  "works.view_label": "Switch view"
+  "works.view_grid": "Grid"
+  "works.view_list": "List"
+  "works.detail": "Project details"
+  "works.field.problem": "Problem solved"
+  "works.field.capabilities": "Core capabilities"
+  "works.field.stack": "Tech stack"
+  "works.field.boundary": "Current limits"
+  "works.field.outputs": "Deliverables"
+  "works.result":
+    one: "Showing {count} project"
+    other: "Showing {count} projects"
+  "works.result_empty": "No matching projects. Try another keyword or switch back to All projects."
+
+  "theme.prev_page": "« Previous"
+  "theme.next_page": "Next »"
+
+fr:
+  "menu.posts": "Articles"
+  "menu.works": "Projets"
+  "menu.gallery": "Voyages"
+  "menu.games": "Jeux"
+  "menu.music": "Musique"
+  "menu.about": "À propos"
+  "menu.tags": "Étiquettes"
+  "menu.search": "Recherche"
+
+  "common.close": "Fermer"
+  "common.theme_toggle": "Changer de thème"
+  "common.lang_switch": "Changer la langue de l'interface"
+
+  "home.tagline": "Code · Idées · Produits"
+
+  "page.search_placeholder": "Saisissez des mots-clés..."
+
+  "gallery.photo_count":
+    one: "{count} photo"
+    other: "{count} photos"
+  "gallery.view_photo": "Voir la photo {index} sur {total}"
+  "gallery.photo_alt": "{title} — photo {index}"
+  "gallery.lightbox_label": "{title} — vue agrandie"
+
+  "games.steam_store": "Page Steam"
+
+  "music.intro": "Les lecteurs ci-dessous diffusent mes playlists NetEase Cloud Music ; le chargement peut prendre quelques secondes."
+
+  "works.overview": "Aperçu des projets"
+  "works.stat.projects": "Projets"
+  "works.stat.prd": "PRD standards"
+  "works.stat.types": "Types"
+  "works.stat.build": "Fonctionnels / prototypes"
+  "works.stat.plan": "Plans / PRD"
+  "works.stat.iterate": "Itérations continues"
+  "works.filter_label": "Filtrer par type"
+  "works.filter_all": "Tous les projets"
+  "works.cat.product": "Plateformes / produits"
+  "works.cat.tool": "Outils / automatisation"
+  "works.cat.game": "Jeux / interactif"
+  "works.cat.content": "Contenu / sites"
+  "works.search_placeholder": "Rechercher un projet, une compétence ou une technologie"
+  "works.search_aria": "Rechercher un projet"
+  "works.view_label": "Changer l'affichage"
+  "works.view_grid": "Grille"
+  "works.view_list": "Liste"
+  "works.detail": "Détails du projet"
+  "works.field.problem": "Problème résolu"
+  "works.field.capabilities": "Compétences clés"
+  "works.field.stack": "Stack technique"
+  "works.field.boundary": "Limites actuelles"
+  "works.field.outputs": "Livrables"
+  "works.result":
+    one: "{count} projet affiché"
+    other: "{count} projets affichés"
+  "works.result_empty": "Aucun projet ne correspond. Essayez un autre mot-clé ou revenez à « Tous les projets »."
+
+  "theme.prev_page": "« Précédent"
+  "theme.next_page": "Suivant »"

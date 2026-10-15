@@ -10,7 +10,7 @@
 
 {{ $musicData := .Site.Data.music }}
 {{ if $musicData }}
-  <p class="music-intro">以下播放器可直接播放网易云音乐歌单，加载可能需要几秒。</p>
+  <p class="music-intro" data-i18n="music.intro">以下播放器可直接播放网易云音乐歌单，加载可能需要几秒。</p>
 
   {{ range $playlist := $musicData.playlists }}
 

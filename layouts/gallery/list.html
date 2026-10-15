@@ -39,7 +39,9 @@
         {{- end }}
         <figcaption class="gallery-caption">
           <span class="gallery-title">{{ $album.Title }}</span>
-          <span class="gallery-meta">{{ $album.Date.Format "2006-01-02" }}{{ with $album.Description }} · {{ . }}{{ end }} · {{ $count }} 张</span>
+          <span class="gallery-meta">{{ $album.Date.Format "2006-01-02" }}{{ with $album.Description }} · {{ . }}{{ end }} ·
+            <span data-i18n="gallery.photo_count" data-i18n-vars='{{ dict "count" $count | jsonify }}'>{{ $count }} 张</span>
+          </span>
         </figcaption>
       </figure>
     </a>
