@@ -6,6 +6,10 @@
 # 带数字的文案用 {count}、{index}、{title} 占位，模板侧用 data-i18n-vars 传值。
 #
 # 注意：这里只放"界面文案"。文章、相册标题、作品资料等内容保持原样，不要放进来。
+#
+# page.* 是各页面顶部的一级/二级标题与副标题（即 front matter 里的标题、描述）。
+# 它们本来写在 content/*/_index.md 里，这里放的是三语版本：
+# 中文值要与正文保持一致，改了正文记得同步这里；{count} 这类占位由模板传值。
 
 zh:
   "menu.posts": "文章"
@@ -63,6 +67,26 @@ zh:
 
   "theme.prev_page": "« 上一页"
   "theme.next_page": "下一页 »"
+
+  "page.posts.title": "文章"
+  "page.works.title": "作品"
+  "page.works.description": "用 Vibe coding 做出来的项目：平台方案、自动化工具、游戏原型，以及这个站点本身。"
+  "page.works.intro": "这里收录了我做过的 {count} 个项目，每个条目都对应一份真实的项目资料。可以按类型筛选，或直接搜索关键词；展开「项目详情」能看到项目解决的问题、核心能力、技术形态和当前边界。"
+  "page.gallery.title": "旅行"
+  "page.gallery.description": "旅行照片"
+  "page.games.title": "游戏"
+  "page.games.description": "我玩过的 Steam 游戏库"
+  "page.music.title": "音乐"
+  "page.music.description": "我的网易云音乐精选"
+  "page.tags.title": "标签"
+  "page.categories.title": "分类"
+  "page.search.title": "搜索"
+  "page.about.title": "关于"
+  "page.about.heading.me": "关于我"
+  "page.about.me": "写代码、做产品、记录想法。"
+  "page.about.heading.site": "关于本站"
+  "page.about.site": "基于 <a href=\"https://gohugo.io/\">Hugo</a> 和 <a href=\"https://github.com/adityatelange/hugo-PaperMod\">PaperMod</a> 主题搭建，托管在 GitHub Pages。"
+  "page.about.heading.contact": "联系"
 
 en:
   "menu.posts": "Posts"
@@ -125,6 +149,26 @@ en:
   "theme.prev_page": "« Previous"
   "theme.next_page": "Next »"
 
+  "page.posts.title": "Posts"
+  "page.works.title": "Works"
+  "page.works.description": "Projects built with vibe coding: platform plans, automation tools, game prototypes — and this site itself."
+  "page.works.intro": "This page collects the {count} projects I have built, each entry backed by a real project dossier. Filter by type or search for keywords; expand \"Project details\" to see the problem solved, core capabilities, tech stack and current limits."
+  "page.gallery.title": "Travel"
+  "page.gallery.description": "Travel photos"
+  "page.games.title": "Games"
+  "page.games.description": "My Steam library"
+  "page.music.title": "Music"
+  "page.music.description": "My NetEase Cloud Music picks"
+  "page.tags.title": "Tags"
+  "page.categories.title": "Categories"
+  "page.search.title": "Search"
+  "page.about.title": "About"
+  "page.about.heading.me": "About me"
+  "page.about.me": "I write code, build products and jot down ideas."
+  "page.about.heading.site": "About this site"
+  "page.about.site": "Built with <a href=\"https://gohugo.io/\">Hugo</a> and the <a href=\"https://github.com/adityatelange/hugo-PaperMod\">PaperMod</a> theme, hosted on GitHub Pages."
+  "page.about.heading.contact": "Contact"
+
 fr:
   "menu.posts": "Articles"
   "menu.works": "Projets"
@@ -185,3 +229,23 @@ fr:
 
   "theme.prev_page": "« Précédent"
   "theme.next_page": "Suivant »"
+
+  "page.posts.title": "Articles"
+  "page.works.title": "Projets"
+  "page.works.description": "Des projets réalisés en vibe coding : plans de plateforme, outils d'automatisation, prototypes de jeux — et ce site lui-même."
+  "page.works.intro": "Cette page rassemble les {count} projets que j'ai réalisés, chaque entrée s'appuyant sur un dossier de projet réel. Filtrez par type ou cherchez un mot-clé ; dépliez « Détails du projet » pour voir le problème résolu, les compétences clés, la stack technique et les limites actuelles."
+  "page.gallery.title": "Voyages"
+  "page.gallery.description": "Photos de voyage"
+  "page.games.title": "Jeux"
+  "page.games.description": "Ma bibliothèque Steam"
+  "page.music.title": "Musique"
+  "page.music.description": "Ma sélection NetEase Cloud Music"
+  "page.tags.title": "Étiquettes"
+  "page.categories.title": "Catégories"
+  "page.search.title": "Recherche"
+  "page.about.title": "À propos"
+  "page.about.heading.me": "À propos de moi"
+  "page.about.me": "J'écris du code, je construis des produits et je note mes idées."
+  "page.about.heading.site": "À propos du site"
+  "page.about.site": "Construit avec <a href=\"https://gohugo.io/\">Hugo</a> et le thème <a href=\"https://github.com/adityatelange/hugo-PaperMod\">PaperMod</a>, hébergé sur GitHub Pages."
+  "page.about.heading.contact": "Contact"

@@ -21,7 +21,8 @@
 </header>
 
 {{- if .Content }}
-<div class="post-content md-content works-intro">
+{{/* data-i18n-vars 供界面词表里的 page.works.intro 取项目数量 */}}
+<div class="post-content md-content works-intro" data-i18n-vars='{{ dict "count" $total | jsonify }}'>
   {{ .Content }}
 </div>
 {{- end }}

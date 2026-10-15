@@ -3,14 +3,14 @@ title: 关于
 layout: single
 ---
 
-## 关于我
+## <span data-i18n="page.about.heading.me">关于我</span>
 
-写代码、做产品、记录想法。
+<span data-i18n="page.about.me">写代码、做产品、记录想法。</span>
 
-## 关于本站
+## <span data-i18n="page.about.heading.site">关于本站</span>
 
-基于 [Hugo](https://gohugo.io/) 和 [PaperMod](https://github.com/adityatelange/hugo-PaperMod) 主题搭建，托管在 GitHub Pages。
+<span data-i18n-html="page.about.site">基于 <a href="https://gohugo.io/">Hugo</a> 和 <a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a> 主题搭建，托管在 GitHub Pages。</span>
 
-## 联系
+## <span data-i18n="page.about.heading.contact">联系</span>
 
 - GitHub: [@Raphaelutumn](https://github.com/Raphaelutumn)

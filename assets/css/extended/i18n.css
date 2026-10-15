@@ -41,6 +41,14 @@
 /* 记住的语言不是中文时，先隐藏待替换的界面文字，避免刷新时闪一下中文。
    这个类由 ui-i18n.js 自己加上再移除；脚本没跑起来就不会隐藏，所以不会白屏。 */
 html.i18n-pending [data-i18n],
+html.i18n-pending [data-i18n-html],
 html.i18n-pending [data-i18n-placeholder] {
+    visibility: hidden;
+}
+
+/* 页面标题/副标题也要换的页面，首屏一并隐藏（没词条的页面不会加这个类） */
+html.i18n-pending-page .page-header h1,
+html.i18n-pending-page .page-header .post-description,
+html.i18n-pending-page .post-single .post-header .post-title {
     visibility: hidden;
 }
